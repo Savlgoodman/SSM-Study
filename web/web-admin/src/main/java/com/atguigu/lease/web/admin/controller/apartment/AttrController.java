@@ -4,9 +4,11 @@ package com.atguigu.lease.web.admin.controller.apartment;
 import com.atguigu.lease.common.result.Result;
 import com.atguigu.lease.model.entity.AttrKey;
 import com.atguigu.lease.model.entity.AttrValue;
+import com.atguigu.lease.web.admin.service.AttrKeyService;
 import com.atguigu.lease.web.admin.vo.attr.AttrKeyVo;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,9 +19,13 @@ import java.util.List;
 @RequestMapping("/admin/attr")
 public class AttrController {
 
+    @Autowired
+    private AttrKeyService attrKeyService;
+
     @Operation(summary = "新增或更新属性名称")
     @PostMapping("key/saveOrUpdate")
     public Result saveOrUpdateAttrKey(@RequestBody AttrKey attrKey) {
+        attrKeyService.saveOrUpdate(attrKey);
         return Result.ok();
     }
 
