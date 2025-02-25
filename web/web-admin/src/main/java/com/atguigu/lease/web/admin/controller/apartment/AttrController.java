@@ -26,7 +26,9 @@ public class AttrController {
     @PostMapping("key/saveOrUpdate")
     public Result saveOrUpdateAttrKey(@RequestBody AttrKey attrKey) {
         attrKeyService.saveOrUpdate(attrKey);
-        return Result.ok();
+        // add something
+
+        return Result.ok(attrKey);
     }
 
     @Operation(summary = "新增或更新属性值")
