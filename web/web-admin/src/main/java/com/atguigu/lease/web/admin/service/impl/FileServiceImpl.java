@@ -39,6 +39,7 @@ public class FileServiceImpl implements FileService {
                     .bucket(minioProperties.getBucketName())
                     .stream(file.getInputStream(), file.getSize(), -1)
                     .object(filename)
+                    .contentType(file.getContentType())
                     .build());
 //            String url = minioProperties.getEndpoint() + "/" + minioProperties.getBucketName() + "/" + filename;
             String url = String.join("/",minioProperties.getEndpoint(),minioProperties.getBucketName(),filename);
