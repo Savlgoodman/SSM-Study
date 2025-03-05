@@ -1,4 +1,4 @@
-package com.atguigu.lease.common.com.atguigu.lease.common.exception;
+package com.atguigu.lease.common.exception;
 
 
 import com.atguigu.lease.common.result.Result;
@@ -15,4 +15,12 @@ public class GlobalExceptionHandler {
         e.printStackTrace();
         return Result.fail();
     }
+
+    @ExceptionHandler(LeaseException.class)
+    @ResponseBody
+    public Result handler(LeaseException e) {
+        e.printStackTrace();
+        return Result.fail(e.getCode(),e.getMessage());
+    }
 }
+
