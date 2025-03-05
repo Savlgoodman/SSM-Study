@@ -4,6 +4,7 @@ package com.atguigu.lease.web.admin.controller.apartment;
 import com.atguigu.lease.common.result.Result;
 import com.atguigu.lease.model.entity.RoomInfo;
 import com.atguigu.lease.model.enums.ReleaseStatus;
+import com.atguigu.lease.web.admin.service.RoomInfoService;
 import com.atguigu.lease.web.admin.vo.room.RoomDetailVo;
 import com.atguigu.lease.web.admin.vo.room.RoomItemVo;
 import com.atguigu.lease.web.admin.vo.room.RoomQueryVo;
@@ -11,6 +12,8 @@ import com.atguigu.lease.web.admin.vo.room.RoomSubmitVo;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.checkerframework.checker.units.qual.A;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,9 +23,13 @@ import java.util.List;
 @RequestMapping("/admin/room")
 public class RoomController {
 
+    @Autowired
+    RoomInfoService service;
+
     @Operation(summary = "保存或更新房间信息")
     @PostMapping("saveOrUpdate")
     public Result saveOrUpdate(@RequestBody RoomSubmitVo roomSubmitVo) {
+        service.saveOrUpdateRoom(roomSubmitVo);
         return Result.ok();
     }
 

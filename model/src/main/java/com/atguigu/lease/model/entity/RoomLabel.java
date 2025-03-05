@@ -9,7 +9,6 @@ import lombok.Data;
 @Schema(description = "房间&标签关联表")
 @TableName(value = "room_label")
 @Data
-@Builder
 public class RoomLabel extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
