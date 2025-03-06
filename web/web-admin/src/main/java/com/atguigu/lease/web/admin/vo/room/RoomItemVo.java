@@ -21,4 +21,7 @@ public class RoomItemVo extends RoomInfo {
     @Schema(description = "所属公寓信息")
     private ApartmentInfo apartmentInfo;
 
+
+
+
 }
