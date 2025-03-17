@@ -4,6 +4,7 @@ import com.atguigu.lease.model.entity.LeaseAgreement;
 import com.atguigu.lease.web.admin.vo.agreement.AgreementQueryVo;
 import com.atguigu.lease.web.admin.vo.agreement.AgreementVo;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -14,4 +15,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface LeaseAgreementService extends IService<LeaseAgreement> {
 
     AgreementVo getAgreementById(Long id);
+
+    IPage<AgreementVo> pageAgreement(Page<AgreementVo> page, AgreementQueryVo queryVo);
 }

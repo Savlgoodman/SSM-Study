@@ -9,6 +9,7 @@ import com.atguigu.lease.web.admin.vo.agreement.AgreementQueryVo;
 import com.atguigu.lease.web.admin.vo.agreement.AgreementVo;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,9 @@ public class LeaseAgreementController {
     @Operation(summary = "根据条件分页查询租约列表")
     @GetMapping("page")
     public Result<IPage<AgreementVo>> page(@RequestParam long current, @RequestParam long size, AgreementQueryVo queryVo) {
-        return Result.ok();
+        Page<AgreementVo> page = new Page<>(current, size);
+        IPage<AgreementVo> res = service.pageAgreement(page,queryVo);
+        return Result.ok(res);
     }
 
     @Operation(summary = "根据id查询租约信息")
